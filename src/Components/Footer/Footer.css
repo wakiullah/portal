@@ -1,0 +1,14 @@
+.Footer ul li {
+  list-style: none;
+  padding: 5px;
+  color: rgb(63, 63, 63);
+}
+
+.Footer ul li:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.Footer {
+  background-image: url(../../images/footer-bg.png);
+}

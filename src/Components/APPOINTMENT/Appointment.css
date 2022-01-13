@@ -1,0 +1,14 @@
+.appointment-banner {
+  background-image: url("../../images/ap-banner-bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 403px;
+}
+
+.appointment-bg {
+  width: 100%;
+  height: 100%;
+  background: #242949eb;
+}
