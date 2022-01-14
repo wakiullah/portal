@@ -36,9 +36,7 @@ const DashboardMenu = () => {
         </div>
         <div>
           <ul>
-            <li>
-              <ListItem to={"/logout"} value="Logout" />
-            </li>
+            <ListItem to={"/logout"} value="Logout" />
           </ul>
         </div>
       </div>
