@@ -2,14 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ModalSlice = createSlice({
   name: "Modal Slice",
-  initialState: { isShow: false },
+  initialState: { prescriptionModal: null, diseaseModal: null },
   reducers: {
-    showModal(state, action) {
-      state.isShow = true;
-      console.log('hiii');
+    showPrescriptionModal(state, action) {
+      state.prescriptionModal = action.payload;
+ 
     },
-    closeModal(state, action) {
-      state.isShow = false;
+    closePrescriptionModal(state, action) {
+      state.prescriptionModal = null;
+    },
+    showDiseaseModal(state, action) {
+      state.diseaseModal = action.payload;
+    },
+    closeDiseaseModal(state, action) {
+      state.diseaseModal = null;
     },
   },
 });

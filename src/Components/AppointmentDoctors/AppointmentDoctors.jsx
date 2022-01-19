@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import doctors from "../../Data/doctors";
 
 import App_Doctor from "./App_Doctor";
 const AppointmentDoctors = () => {
+ const doctors= useSelector(state=>state.doctors.doctors)
   const ContextDate = useSelector((state) => state.date.date);
   const allDoctorsInfo = doctors.map((doctor, index) => (
     <App_Doctor

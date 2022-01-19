@@ -4,25 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../../Store/Slices/ModalContext";
 import Popup from "../../PopUp/PrescriptionPopup/Popup";
 
-const PrescriptionModal = ({ person }) => {
+const DiseaseModal = ({ person }) => {
   const dispatch = useDispatch();
-  const { pataint, doctor } = useSelector((state) => state.modal.prescriptionModal);
-
+  const { pataint, doctor } = useSelector((state) => state.modal.diseaseModal);
+  console.log(pataint, doctor);
   const closeModalHandler = () => {
-    dispatch(modalActions.closePrescriptionModal());
+    dispatch(modalActions.closeDiseaseModal());
   };
 
   return (
     <Popup isModalShow={!!pataint} setisModalShow={closeModalHandler}>
-      <div className="flex justify-between">
-        <p className="text-xl text-cyan-500 ">{doctor.name}</p>
-        <p className="text-xl text-gray-500 ">{doctor.designation}</p>
-        <p className="text-xl text-gray-800 ">{doctor.category}</p>
-      </div>
-      <div className="flex justify-between">
-        <p className="text-xl text-cyan-500 ">{pataint.patientInfo.name}</p>
-        <p className="text-xl text-gray-500 ">{doctor.designation}</p>
-        <p className="text-xl text-gray-800 ">{doctor.category}</p>
+      <div className="text-center">
+        <h2 className=" text-2xl text-cyan-500 font-normal">
+          {pataint.patientInfo.name}'s disiase
+        </h2>
+        <p>Appointment To</p>
+        <h1 className="text-green-500 text-xl ">{doctor.name}</h1>
+        <p className="text-gray-600">{doctor.category}</p>
+        <textarea
+          value={pataint.disease}
+          className="mt-6 p-2 w-full border-2 rounded-md"
+        ></textarea>
       </div>
       <div className="text-right  bg-white mt-2">
         <button
@@ -38,4 +40,4 @@ const PrescriptionModal = ({ person }) => {
     </Popup>
   );
 };
-export default PrescriptionModal;
+export default DiseaseModal;

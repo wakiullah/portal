@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import DashboardMenu from "../../Components/Dashboard/Menu";
 import PrescriptionDataTable from "../../Components/Dashboard/PrescriptionDataTable";
-import PrescriptionModal from "../../Components/Dashboard/PrescriptionModal/PrescriptionModal";
-import Popup from "../../Components/PopUp/Popup/PopUp";
+import PrescriptionModal from "../../Components/Dashboard/DiseasedModal/DiseaseModal";
 
 const Prescription = () => {
+  const modalInfo = useSelector((state) => state.modal.diseaseModal);
+
   return (
     <section className="prescription flex justify-between">
       <DashboardMenu />
@@ -32,7 +34,7 @@ const Prescription = () => {
           <PrescriptionDataTable />
         </div>
       </div>
-      {/* <PrescriptionModal /> */}
+      {!!modalInfo && <PrescriptionModal />}
     </section>
   );
 };

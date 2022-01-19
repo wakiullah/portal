@@ -6,8 +6,6 @@ import Preloader from "../Preloader/Preloader";
 const AppointmentDataTable = () => {
   const allPataintData = useSelector((state) => state.patient.pataints);
 
-  console.log(allPataintData.length);
-
   const paid = (
     <p className="inline-block bg-green-700 text-white px-3 py-1 rounded-md">
       Paid

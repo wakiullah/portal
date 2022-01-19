@@ -3,14 +3,20 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../Store/Slices/ModalContext";
 import Preloader from "../Preloader/Preloader";
-import PrescriptionModal from "./PrescriptionModal/PrescriptionModal";
 
 const PrescriptionDataTable = () => {
   const dispatch = useDispatch();
   const allPataintData = useSelector((state) => state.patient.pataints);
+  const doctorsData = useSelector((state) => state.doctors.doctors);
 
-  const showModalHandler = () => {
-    dispatch(modalActions.showModal());
+  const showModalHandler = (pataintInfo) => {
+    const pataintsDoc = doctorsData.find((doc) => doc.id === pataintInfo.apId);
+    dispatch(
+      modalActions.showDiseaseModal({
+        pataint: pataintInfo,
+        doctor: pataintsDoc,
+      })
+    );
   };
 
   const paid = (
@@ -34,19 +40,18 @@ const PrescriptionDataTable = () => {
         <td className=" py-4 ">#{patient._id.slice(-7)}</td>
         <td className=" py-4 ">{patient.visitingStatus}</td>
         <td className=" py-4 uppercase ">
-          <p className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded">
-            View
-          </p>
-        </td>
-        <td className=" py-4 uppercase text-center">
           <p
-            onClick={showModalHandler}
+            onClick={() => showModalHandler(patient)}
             className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded"
           >
             View
           </p>
         </td>
-        <PrescriptionModal />
+        <td className=" py-4 uppercase text-center">
+          <p className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded">
+            View
+          </p>
+        </td>
       </tr>
     ));
 
