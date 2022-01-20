@@ -1,15 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import DashboardMenu from "../../Components/Dashboard/Menu";
 import PrescriptionDataTable from "../../Components/Dashboard/PrescriptionDataTable";
-import PrescriptionModal from "../../Components/Dashboard/DiseasedModal/DiseaseModal";
+import DeseaseModal from "../../Components/Dashboard/DiseasedModal/DiseaseModal";
+import PrescriptionModal from "../../Components/Dashboard/PrescriptionModal/PrescriptionModal";
 
 const Prescription = () => {
-  const modalInfo = useSelector((state) => state.modal.diseaseModal);
+  const deseaseModalInfo = useSelector((state) => state.modal.diseaseModal);
+  const prescriptionModalInfo = useSelector(
+    (state) => state.modal.prescriptionModal
+  );
 
   return (
-    <section className="prescription flex justify-between">
-      <DashboardMenu />
+    <>
       <div className=" h-screen overflow-auto  w-10/12 px-6 bg-green-100">
         <div className="py-6 text-2xl ">
           <h2>Prescription</h2>
@@ -34,8 +36,9 @@ const Prescription = () => {
           <PrescriptionDataTable />
         </div>
       </div>
-      {!!modalInfo && <PrescriptionModal />}
-    </section>
+      {!!deseaseModalInfo && <DeseaseModal />}
+      {!!prescriptionModalInfo && <PrescriptionModal />}
+    </>
   );
 };
 export default Prescription;

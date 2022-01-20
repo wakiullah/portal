@@ -33,9 +33,6 @@ const DiseaseModal = ({ person }) => {
         >
           Cancel
         </button>
-        <button className=" bg-sky-600 text-white rounded-sm ml-3 px-6 py-2">
-          Update
-        </button>
       </div>
     </Popup>
   );

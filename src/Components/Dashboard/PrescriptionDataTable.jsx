@@ -9,10 +9,20 @@ const PrescriptionDataTable = () => {
   const allPataintData = useSelector((state) => state.patient.pataints);
   const doctorsData = useSelector((state) => state.doctors.doctors);
 
-  const showModalHandler = (pataintInfo) => {
+  const showDeseaseModalHandler = (pataintInfo) => {
     const pataintsDoc = doctorsData.find((doc) => doc.id === pataintInfo.apId);
     dispatch(
       modalActions.showDiseaseModal({
+        pataint: pataintInfo,
+        doctor: pataintsDoc,
+      })
+    );
+  };
+
+  const showPrescriptionModalHandler = (pataintInfo) => {
+    const pataintsDoc = doctorsData.find((doc) => doc.id === pataintInfo.apId);
+    dispatch(
+      modalActions.showPrescriptionModal({
         pataint: pataintInfo,
         doctor: pataintsDoc,
       })
@@ -41,14 +51,17 @@ const PrescriptionDataTable = () => {
         <td className=" py-4 ">{patient.visitingStatus}</td>
         <td className=" py-4 uppercase ">
           <p
-            onClick={() => showModalHandler(patient)}
+            onClick={() => showDeseaseModalHandler(patient)}
             className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded"
           >
             View
           </p>
         </td>
         <td className=" py-4 uppercase text-center">
-          <p className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded">
+          <p
+            onClick={() => showPrescriptionModalHandler(patient)}
+            className="inline-block px-3 py-2 cursor-pointer bg-green-500 text-white rounded"
+          >
             View
           </p>
         </td>
