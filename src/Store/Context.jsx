@@ -4,6 +4,7 @@ import DateContext from "./Slices/DateContext";
 import PatientSlices from "./Slices/PatientsContext";
 import ModalContext from "./Slices/ModalContext";
 import DoctorsContext from "./Slices/DoctorsContext";
+import LoginContext from "./Slices/LoginContext";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     patient: PatientSlices,
     modal: ModalContext,
     doctors: DoctorsContext,
+    login: LoginContext,
   },
 });
 

@@ -53,6 +53,7 @@ const Doctors = ({ doctors }) => {
         <div className="flex mb-20">
           {doctors.map((doc) => (
             <App_Doctor
+              key={doc.name}
               type={doc.category}
               name={doc.name}
               img={doc.img}

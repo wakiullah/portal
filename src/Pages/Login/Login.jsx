@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LoginActions } from "../../Store/Slices/LoginContext";
 import { NoticeAction } from "../../Store/Slices/NotificationContext";
-
 import "./Login.css";
 const LogIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(NoticeAction);
   const [haveAccount, setHaveAccount] = useState(true);
   const EmailRef = useRef();
   const PassRef = useRef();
@@ -53,7 +54,6 @@ const LogIn = () => {
         } else {
           return response.json().then((error) => {
             let message = "Faild To Fetch";
-            // console.log(error);
             if (error && error.error && error.error.message) {
               message = error.error.message;
             }
@@ -62,13 +62,17 @@ const LogIn = () => {
         }
       })
       .then((data) => {
-        console.log(data);
+        window.localStorage.setItem("loginToken", data.idToken);
+        dispatch(LoginActions.logInHandler({ token: data.idToken }));
+        navigate("/dashboard/dashboard", { replace: true });
+        console.log("logedin");
         let message;
         if (!haveAccount) {
           message = "Congratulations! Account Created!";
         } else {
           message = "Logged In!";
         }
+
         dispatch(
           NoticeAction.setNotice({ notice: message, noticeType: "success" })
         );

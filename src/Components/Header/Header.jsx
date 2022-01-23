@@ -6,11 +6,14 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const notice = useSelector((state) => state.notice.notice);
   const [isStiky, setIsStiky] = useState(true);
- 
 
   let className = isStiky
     ? " bg-transparent fixed top-0 left-0 right-0 z-50"
     : " bg-white fixed top-0 left-0 right-0 z-50 shadow-md";
+
+  const logOutHandler = () => {
+    window.localStorage.removeItem("loginToken");
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -26,6 +29,7 @@ const Header = () => {
     ? "container mx-auto flex justify-between pt-2 pb-4"
     : "container mx-auto flex justify-between py-4";
 
+  const inLoggedIn = window.localStorage.getItem("loginToken");
   return (
     <header className={className}>
       {notice.notice && (
@@ -68,12 +72,22 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to={"/login"}
-                className={`px-5 bg-cyan-500 py-3 rounded-lg text-white hover:bg-cyan-600`}
-              >
-                LogIn
-              </NavLink>
+              {inLoggedIn ? (
+                <NavLink
+                  to={"/login"}
+                  className={`px-5 bg-cyan-500 py-3 rounded-lg text-white hover:bg-cyan-600`}
+                >
+                  LogIn
+                </NavLink>
+              ) : (
+                <NavLink
+                  onClick={logOutHandler}
+                  to="/dashboard"
+                  className={`px-5 bg-cyan-500 py-3 rounded-lg text-white hover:bg-cyan-600`}
+                >
+                  Logout
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

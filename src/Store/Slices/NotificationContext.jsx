@@ -14,7 +14,6 @@ const NotificationSlice = createSlice({
         type: action.payload.noticeType,
         notice: action.payload.notice,
       };
-      console.log(action);
     },
   },
 });
