@@ -122,7 +122,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-12">
-        <p className='text-center text-gray-500'>© 2021 Developed by Muhammad Wakiullah </p>
+        <p className='text-center text-gray-500'>© 2022 Developed by Muhammad Wakiullah </p>
       </div>
     </footer>
   );
