@@ -42,7 +42,7 @@ const PrescriptionDataTable = () => {
   const allTables =
     allPataintData &&
     allPataintData.map((patient, index) => (
-      <tr className="">
+      <tr className="" key={index}>
         <td className=" py-4">{index + 1}</td>
         <td className=" py-4">{patient.date}</td>
         <td className=" py-4">{patient.time}</td>

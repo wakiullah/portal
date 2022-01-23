@@ -17,7 +17,7 @@ const PrescriptionModal = ({ person }) => {
   const allTablesData =
     pataint.prescription &&
     pataint.prescription.map((prescription, index) => (
-      <tr className="">
+      <tr className="" key={index}>
         <td className=" py-4">{index + 1}</td>
         <td className=" py-4 ">{prescription.medicine}</td>
         <td className=" py-4 ">{prescription.doge}</td>

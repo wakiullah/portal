@@ -13,7 +13,6 @@ const LoginContext = createSlice({
   initialState,
   reducers: {
     logInHandler(state, action) {
-      console.log(action.payload);
       state.token = action.payload.token;
       state.isLogin = !!action.payload.token;
     },

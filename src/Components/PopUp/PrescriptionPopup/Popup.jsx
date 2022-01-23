@@ -13,6 +13,7 @@ const Popup = ({ children, isModalShow, setisModalShow }) => {
           overlayClassName="Overlay bg-black bg-opacity-75 w-screen h-screen fixed top-0 left-0 z-30"
           shouldCloseOnOverlayClick={true}
           onRequestClose={setisModalShow}
+          ariaHideApp={false}
         >
           {children}
         </Modal>,

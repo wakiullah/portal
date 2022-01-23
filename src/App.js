@@ -10,10 +10,17 @@ import Reviews from "./Pages/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { NoticeAction } from "./Store/Slices/NotificationContext";
 import { doctorsActions } from "./Store/Slices/DoctorsContext";
+import CommingSoon from "./Pages/CommingSoon/CommingSoon";
 
 export default function App() {
-  let a = useLocation().pathname.slice(0, 10);
+  let pathname = useLocation().pathname.slice(0, 10);
   const dispatch = useDispatch();
+
+  const notification = useSelector((state) => state.notice.notice.notice);
+  if (notification) {
+    setTimeout(() => dispatch(NoticeAction.clearNotice()), [5000]);
+  }
+
   useEffect(() => {
     fetch("https://online-doctors-portal.herokuapp.com/doctors")
       .then((res) => res.json())
@@ -28,10 +35,9 @@ export default function App() {
   }, [dispatch]);
   let { token, isLogin } = useSelector((state) => state.login);
 
-
   return (
     <>
-      {a !== "/dashboard" && <Header />}
+      {pathname !== "/dashboard" && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/apointment" element={<GetDoctor />} />
@@ -43,18 +49,13 @@ export default function App() {
         />
         <Route
           path="/login"
-          element={
-            isLogin ? (
-              <Navigate to="/dashboard/dashboard" />
-            ) : (
-              <LogIn/>
-            )
-          }
+          element={isLogin ? <Navigate to="/dashboard/dashboard" /> : <LogIn />}
         />
         <Route
           path="/dashboard"
           element={<Navigate to="/dashboard/dashboard" />}
         />
+        <Route path="/*" element={<CommingSoon />} />
       </Routes>
     </>
   );

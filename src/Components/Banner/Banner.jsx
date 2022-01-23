@@ -26,7 +26,7 @@ const Banner = ({ calenderShow }) => {
               </p>
               <button type="button">
                 <NavLink
-                  to={"/"}
+                  to={"/book_appointment"}
                   className="px-8 py-4 rounded-md bg-cyan-500 hover:bg-cyan-700 text-zinc-100"
                 >
                   Make Appointment

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const App_Doctor = ({
   type,
@@ -42,8 +43,13 @@ const App_Doctor = ({
           <h3 className="text-md font-medium mt-5">{details1}</h3>
           <h3 className="text-md font-medium">{details2}</h3>
           <h4 className="text-md font-medium">{details3}</h4>
-          <button className="px-8 py-3 bg-cyan-500 text-white rounded-lg block mx-auto cursor-pointer mt-7">
-            BOOK APPOINTMENT
+          <button>
+            <NavLink
+              className="px-8 py-3 bg-cyan-500 text-white rounded-lg block mx-auto cursor-pointer mt-7"
+              to="/book_appointment"
+            >
+              BOOK APPOINTMENT
+            </NavLink>
           </button>
         </div>
       </div>

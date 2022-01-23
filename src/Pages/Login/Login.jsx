@@ -65,7 +65,6 @@ const LogIn = () => {
         window.localStorage.setItem("loginToken", data.idToken);
         dispatch(LoginActions.logInHandler({ token: data.idToken }));
         navigate("/dashboard/dashboard", { replace: true });
-        console.log("logedin");
         let message;
         if (!haveAccount) {
           message = "Congratulations! Account Created!";

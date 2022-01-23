@@ -13,9 +13,15 @@ const Features = () => {
   //   setInterval(changeImgs, 2000);
   let isIntervel;
   useEffect(() => {
-    if (!isIntervel) {
-      isIntervel = setInterval(changeImgs, 2000);
-    }
+    const interval = () => {
+      if (!isIntervel) {
+        isIntervel = setInterval(changeImgs, 2000);
+      }
+    };
+    interval();
+    return () => {
+      clearInterval(isIntervel);
+    };
   }, [isIntervel]);
 
   const changeImgs = () => {

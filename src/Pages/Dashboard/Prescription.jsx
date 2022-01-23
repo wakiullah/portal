@@ -23,7 +23,6 @@ const Prescription = () => {
             </div>
             <div className="">
               <select
-                desabled
                 className="rounded-sm px-3 py-2 text-lg bg-gray-400"
                 id=""
               >

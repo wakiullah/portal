@@ -18,9 +18,9 @@ const AppointmentDataTable = () => {
 
   const allTables =
     allPataintData &&
-    allPataintData.map((patient,index) => (
-      <tr className="">
-        <td className=" py-4">{index+1}</td>
+    allPataintData.map((patient, index) => (
+      <tr className="" key={index}>
+        <td className=" py-4">{index + 1}</td>
         <td className=" py-4">{patient.date}</td>
         <td className=" py-4">{patient.time}</td>
         <td className=" py-4">{patient.patientInfo.name}</td>
@@ -39,18 +39,19 @@ const AppointmentDataTable = () => {
                   : statusClassApproved
               } `}
               id=""
+              defaultValue={`${patient.status}`}
             >
               <option
                 className="rounded-sm px-3 py-2"
                 selected={patient.status === "Pending"}
-                value=""
+                value="Pending"
               >
                 Pending
               </option>
               <option
                 className="rounded-sm px-3 py-2"
                 selected={patient.status === "Approved"}
-                value=""
+                value="Approved"
               >
                 Approved
               </option>
@@ -62,7 +63,6 @@ const AppointmentDataTable = () => {
 
   return (
     <div className="w-full  ">
-     
       {allPataintData.length > 0 ? (
         <div className="px-4">
           <table className=" w-full  text-left  ">

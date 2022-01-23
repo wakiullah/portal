@@ -7,13 +7,14 @@ const NotificationSlice = createSlice({
   name: "notification",
   initialState: initialState,
   reducers: {
-
-
     setNotice(state, action) {
       state.notice = {
         type: action.payload.noticeType,
         notice: action.payload.notice,
       };
+    },
+    clearNotice(state) {
+      state.notice = {};
     },
   },
 });

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Icon from "../../images/logo.png";
 import { LoginActions } from "../../Store/Slices/LoginContext";
+import { NoticeAction } from "../../Store/Slices/NotificationContext";
 
 const ListItem = ({ value, to, onClick }) => {
   return (
@@ -21,6 +22,9 @@ const DashboardMenu = () => {
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(LoginActions.logOutHandler());
+    dispatch(
+      NoticeAction.setNotice({ notice: "Log Out!", noticeType: "error" })
+    );
     window.localStorage.clear();
   };
   return (
